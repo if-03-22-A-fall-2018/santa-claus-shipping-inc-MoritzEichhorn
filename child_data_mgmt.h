@@ -1,7 +1,7 @@
-
 #ifndef SANTACLAUS_CHILDDATAMGMT_H
 #define SANTACLAUS_CHILDDATAMGMT_H
 
+#include <stdlib.h>
 #include "list.h"
 
 typedef struct _childData {
