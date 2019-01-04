@@ -15,7 +15,7 @@ List* list_create(){
 }
 
 void list_delete(List *list){
-
+  free(list);
 }
 
 void list_add(List *list, void *data)

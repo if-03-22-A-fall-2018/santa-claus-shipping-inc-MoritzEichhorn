@@ -43,4 +43,9 @@ void plan_delete(TourPlan *plan);
  */
 int plan_calc_presents(double goodness);
 
+/**
+ * Converts a ChildData into a ChildPlan
+ */
+ChildPlan* get_child_data_as_child_plan(ChildData* child_data);
+
 #endif //SANTACLAUS_TOURPLAN_H
