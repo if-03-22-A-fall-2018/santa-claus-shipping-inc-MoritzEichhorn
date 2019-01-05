@@ -37,5 +37,6 @@ Node* cdm_get_sorted_data(ChildDataMgmt *cdm){
 }
 
 void cdm_delete(ChildDataMgmt *cdm){
+  list_delete(cdm->list);
   free(cdm);
 }

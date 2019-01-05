@@ -1,5 +1,6 @@
 #include "tour_plan.h"
 #include <string.h>
+#include <stdio.h>
 
 TourPlan* plan_createTour(ChildDataMgmt *cdm){
   TourPlan* tour_plan = (TourPlan*)malloc(sizeof(TourPlan));
@@ -28,17 +29,42 @@ TourPlan* plan_createTour(ChildDataMgmt *cdm){
     tour_plan->total_presents += crnt_child_plan->presents;
     crnt_node = list_get_next(crnt_node);
   }
-
+  free(city_before);
   return tour_plan;
 }
 
 
 void plan_print(TourPlan *plan){
+  Node* node_city_plan = list_get_first(plan->city_plans);
+  Node* node_child_plan;
+  CityPlan* crnt_city_plan;
+  ChildPlan* crnt_child_plan;
 
+  printf("Shipping %d presents to %d children!\n",plan->total_presents, plan->total_children);
+  while(node_city_plan != 0){
+    crnt_city_plan = (CityPlan*)list_get_data(node_city_plan);
+    printf("***\n");
+    printf("Shipment to %s:\n", crnt_city_plan->city);
+    node_child_plan = list_get_first(crnt_city_plan->child_plans);
+
+    while(node_child_plan != 0){
+      crnt_child_plan = (ChildPlan*)list_get_data(node_child_plan);
+      printf("%s: %d presents\n", crnt_child_plan->name, crnt_child_plan->presents);
+      node_child_plan = list_get_next(node_child_plan);
+    }
+    node_city_plan = list_get_next(node_city_plan);
+  }
 }
 
 
 void plan_delete(TourPlan *plan){
+  Node* node_city_plan = list_get_first(plan->city_plans);
+
+  while(node_city_plan != 0){
+    free(((CityPlan*)list_get_data(node_city_plan))->child_plans);
+    node_city_plan = list_get_next(node_city_plan);
+  }
+  free(plan->city_plans);
   free(plan);
 }
 
