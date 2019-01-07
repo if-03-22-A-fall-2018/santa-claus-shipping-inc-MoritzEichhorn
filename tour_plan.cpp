@@ -5,7 +5,7 @@
 TourPlan* plan_createTour(ChildDataMgmt *cdm){
   TourPlan* tour_plan = (TourPlan*)malloc(sizeof(TourPlan));
   tour_plan->city_plans = list_create();
-  char* city_before = (char*)malloc(128);
+  char* city_before = (char*)malloc(32);
   CityPlan* crnt_city_plan;
   ChildData* crnt_child_data;
   ChildPlan* crnt_child_plan;
