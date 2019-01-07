@@ -43,4 +43,6 @@ Node* list_get_next(Node *node);
  */
 void* list_get_data(Node *node);
 
+int list_get_length(List* list);
+
 #endif //SANTACLAUS_LIST_H
