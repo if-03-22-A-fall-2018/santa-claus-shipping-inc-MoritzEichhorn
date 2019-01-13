@@ -76,3 +76,13 @@ int list_get_length(List* list){
 
   return count;
 }
+
+void list_delete_data_of_node(List *list){
+  int length = list_get_length(list);
+  Node* crnt_node = list->head;
+
+  for(int i = 0; i < length; i++){
+    free(list_get_data(crnt_node));
+    crnt_node = crnt_node->next;
+  }
+}

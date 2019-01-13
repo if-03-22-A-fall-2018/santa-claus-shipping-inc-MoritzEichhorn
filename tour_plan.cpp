@@ -62,9 +62,11 @@ void plan_delete(TourPlan *plan){
   Node* node_city_plan = list_get_first(plan->city_plans);
 
   for(int i = 0; i < length; i++){
+    list_delete_data_of_node(((CityPlan*)list_get_data(node_city_plan))->child_plans);
     list_delete(((CityPlan*)list_get_data(node_city_plan))->child_plans);
     node_city_plan = list_get_next(node_city_plan);
   }
+  list_delete_data_of_node(plan->city_plans);
   list_delete(plan->city_plans);
   free(plan);
 }

@@ -45,4 +45,6 @@ void* list_get_data(Node *node);
 
 int list_get_length(List* list);
 
+void list_delete_data_of_node(List *list);
+
 #endif //SANTACLAUS_LIST_H
